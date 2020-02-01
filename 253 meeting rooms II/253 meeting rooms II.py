@@ -29,7 +29,7 @@ if __name__ == "__main__":
     testCases.append([])
     tmp = [[2,4],[3,7]]
     testCases.append(tmp)
-    tmp = [7,10],[2,4]
+    tmp = [[7,10],[2,4]]
     testCases.append(tmp)
     for testCase in testCases:
         print(s.minMeetingRooms(testCase))
