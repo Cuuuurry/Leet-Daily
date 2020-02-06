@@ -1,6 +1,7 @@
 # Definition for an interval.
 # I learned this method from LeetCode official account.
 import heapq
+from typing import List
 
 
 class Interval(object):
