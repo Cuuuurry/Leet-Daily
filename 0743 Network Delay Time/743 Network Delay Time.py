@@ -21,6 +21,7 @@ class Solution(object):
 
         return max(dist.values()) if len(dist) == N else -1
 
+
 if __name__ == "__main__":
     times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
     N = 4
