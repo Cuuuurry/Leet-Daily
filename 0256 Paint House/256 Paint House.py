@@ -3,8 +3,8 @@ from typing import List
 
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
-        if not costs:
-            return 0
+        # Do not need here, since even List is null, there will still be iterator,
+        # because of the linked list property
         chooseRed = 0
         chooseGreen = 0
         chooseBlue = 0
