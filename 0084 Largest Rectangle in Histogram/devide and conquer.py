@@ -3,21 +3,21 @@ from typing import List
 
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
-        if not heights:
-            return 0
-        # find the minimum to divide
-        for breakpoint in range(len(heights)):
-            if heights[breakpoint] == min(heights):
-                break
-        middleArea = heights[breakpoint] * len(heights)
-        leftArea, rightArea = 0, 0
+        # should not convey the entire list, that may explode the RAM
 
-        # conquer each part
-        if breakpoint >= 1:
-            leftArea = self.largestRectangleArea(heights[:breakpoint])
-        if breakpoint < len(heights) - 1:
-            rightArea = self.largestRectangleArea(heights[breakpoint + 1:])
+        def maxArea(start, end):
+            if start >= end:
+                return 0
+            miniInList = min(heights[start: end])
+            for breakpoint in range(start, end):
+                if heights[breakpoint] == miniInList:
+                    break
+            middleArea = heights[breakpoint] * (end - start)
+            leftArea, rightArea = 0, 0
+            if breakpoint > start:
+                leftArea = maxArea(start, breakpoint)
+            if breakpoint < end - 1:
+                rightArea = maxArea(breakpoint + 1, end)
+            return max(leftArea, middleArea, rightArea)
 
-        # print(f"For {heights}, we have {leftArea}, {middleArea}, {rightArea}")
-
-        return max(leftArea, middleArea, rightArea)
+        return maxArea(0, len(heights))
